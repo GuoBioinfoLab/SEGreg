@@ -1,0 +1,82 @@
+<html >
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <title>Search</title>
+    {% set current_page = '' %}
+    {% include 'navigation.partial.html' %}
+    </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#tcga').tablesorter({
+            theme: "bootstrap",
+            widgets: ["uitheme", 'zebra'],
+            headerTemplate: '{content} {icon}'
+        });
+    });
+     $(function (){
+        $("[data-toggle='popover']").popover();
+    });
+</script>
+<div class="container bs-docs-container" >
+{#    <ul class="pager" style="list-style-type: none">#}
+        <table>
+        <tr><td style="width:600px;color: #CD3700;"><h4>Search item: <b>{{ input_term }}.</b> Total records: <b>{{ sum }}.</b> </h4></td> <td align="right" width="500px">{{ pagination.links }}</td></tr>
+    </table>
+{#        <li style="float:right;width:500px;">{{ pagination.links }}</li>#}
+{#        <h4 style="width:200px;color: #CD3700;"><b>Total records: {{ sum }}</b></h4>#}
+{#    </ul>#}
+    <table id="tcga"  class="table table-bordered table-striped table-hover table-condensed tablesorter tablesorter-bootstrap" role = "grid">
+        <thead><tr class = "active" role="row">
+            <th>Data source</th><th>Cancer/Tissue</th><th>Gene</th><th style="text-align:center">Tag</th><th title="If this gene is regulated by miRNAs in the same tissue, the miRNAs are list in this column">miRNA</th><th title="If this gene is regulated by TFs in the same tissue, the TFs are list in this column">Gene regulated by TFs</th><th title="If this gene is also a TF, TF targets in the same tissue are list in this column">TF targets</th><th>Regulation<br> network</th><th>Detail</th></tr></thead>
+        <tbody>
+        {% for i in numbers %}
+            <tr>
+                <td>{{ i.0 }}</td>
+                <td>{{ i.2 }}</td>
+                <td title="NCBI link"><a href="https://www.ncbi.nlm.nih.gov/gene/?term={{ i.3 }}" target="_blank">{{ i.3 }}</td>
+                <td style="background-color:#skyblue" ><a href="http://bioinfo.life.hust.edu.cn/SEGreg/expBarplotSearchAll?source={{ i.0 }}&tissue={{ i.2 }}&gene={{ i.3 }}" target="_blank">{{ i.4 }}</a></td>
+                <td title="{{ i.5}}">{{ i.5|truncate(20) }}</td>
+                <td title="{{ i.6}}">{{ i.6|truncate(20) }}</td>
+                <td title="{{ i.7}}">{{ i.7|truncate(20) }}</td>
+                <td align="center"><a href="http://bioinfo.life.hust.edu.cn/SEGreg/allDBnetwork?source={{ i.0 }}&tissue={{ i.2 }}&gene={{ i.3 }}" target="_blank">network</a></td>
+                <td align="center"><button id="{{ i.1 }}" value="{{ i }}"  onclick="document.getElementById('details').innerHTML =test({{ i.1 }})" style="height:26px" class="btn btn-primary"  data-toggle="modal"  data-target="#myModal">detail</button></td></tr>
+                <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content" >
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4  class="modal-title" id="myModalLabel"><b>Details</b></h4>
+                            </div>
+                            <div id="details" class="modal-body" style="color: #9400D3">
+                                <p>Text goes here.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        {% endfor %}
+        </tbody>
+    </table>
+    {{ pagination.links }}
+<script>
+        function test(a){var myvar= document.getElementById(a).value;
+            var datasource=myvar.split(",")[0].replace("('","").replace("'","");
+            var tissue=myvar.split(",")[2].replace("u'","").replace("'","");
+            var gene=myvar.split(",")[3].replace("u'","").replace("'","");
+            var tag=myvar.split(",")[4].replace("u'","").replace("'","");
+            var miR=myvar.split(",")[5].replace("u'","").replace("'","");
+            var gene_TF=myvar.split(",")[6].replace("u'","").replace("'","");
+            var TF_gene=myvar.split(",")[7].replace("u'","").replace("'","").replace(")","");
+            return "<b>Data &nbsp source:&nbsp</b>"+datasource+"<br>"+"<b>Tissue:&nbsp</b>"+tissue+"<br>"+"<b>Gene:&nbsp</b>"+gene+"<br>"+"<b>Highly/Lowly expressed:&nbsp</b>"+tag+"ly<br>"+"<b>Gene regulated by miRNAs:&nbsp</b>"+miR+"<br>"+"<b>Gene regulated by TFs:&nbsp</b>"+gene_TF+"<br>"+"<b>If&nbsp this&nbsp gene&nbsp is&nbsp a&nbsp TF,&nbsp the regulated genes are:&nbsp</b>"+TF_gene;
+        }</script>
+</div>
+
+</body>
+</html>
+{% include 'footer.html' %}

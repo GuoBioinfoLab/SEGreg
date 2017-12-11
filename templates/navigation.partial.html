@@ -1,0 +1,94 @@
+{#<link rel="stylesheet" type = "text/css" href="/static/SEGreg/css/navibar.css">#}
+{#    <link rel="stylesheet" type = "text/css" href="/static/SEGreg/css/bootstrap.min.css">#}
+{#    <link rel="stylesheet" type="text/css" href="/static/SEGreg/css/docs.min.css">#}
+{#    <link rel="stylesheet" type="text/css" href="/static/SEGreg/css/jquery.tablesorter.pager.min.css">#}
+{#    <link rel="stylesheet" type = "text/css" href="/static/SEGreg/css/main.css">#}
+{#<script src="/static/SEGreg/lib/jquery/jquery-3.1.1.min.js"></script>#}
+{#    <script src="/static/SEGreg/js/jquery.min.js"></script>#}
+{#    <script src="/static/SEGreg/js/bootstrap.min.js"></script>#}
+{##}
+{#    <link rel="stylesheet" href="/static/SEGreg/css/bootstrap.css">#}
+{#    <link rel="stylesheet" href="/static/SEGreg/css/theme.bootstrap.css">#}
+{#    <link rel="icon" href="/static/SEGreg/images/SEGreglogo4.png">#}
+<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/SEGreg/css/docs.min.css">
+    <link rel="stylesheet" type = "text/css" href="/static/SEGreg/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/SEGreg/css/jquery.tablesorter.pager.min.css">
+    <link rel="stylesheet" type = "text/css" href="/static/SEGreg/css/main.css">
+    <link rel="stylesheet" href="/static/SEGreg/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/SEGreg/css/theme.bootstrap.css">
+    <link rel="stylesheet" type = "text/css" href="/static/SEGreg/css/navibar.css">
+    <script src="/static/SEGreg/js/bootstrap.min.js"></script>
+    <script src="/static/SEGreg/lib/jquery/jquery-3.1.1.min.js"></script>
+    <script src="/static/SEGreg/js/jquery.tablesorter.min.js"></script>
+    <script src="/static/SEGreg/js/jquery.tablesorter.widgets.min.js"></script>
+    <script src="/static/SEGreg/js/jquery.tablesorter.pager.min.js"></script>
+    <script src="/static/SEGreg/js/bootstrap-typeahead.js"></script>
+{#    <script src="/static/SEGreg/js/respond.min.js"></script>#}
+{#    <script src="/static/SEGreg/js/html5shiv.js"></script>#}
+    <link rel="icon" href="/static/SEGreg/images/SEGregLogo.png">
+    <script src="/static/SEGreg/lib/bootstrap/bootstrap.js"></script>
+</head>
+
+<script>
+function load(){
+    var query_item = document.getElementById("search").value;
+    alert(query_item)
+     if(/[@#\$%\^&\*]+/g.test(query_item)){
+            alert("Invalid input");
+            history.back();
+        }   
+    
+}		
+
+
+</script>
+
+<body>
+<div class="container"><a href="/SEGreg/"><img style="border-bottom:1px #AAAAAA solid;" src="/static/SEGreg/images/SEGregLogo.png" alt="editingLogo" id="logo-banner"  width="100%" ></a></div>
+<div class="container">
+<nav class="navbar navbar-default navbar-custom" >
+  <div class="container-fluid" style="background-color:#EAEAEA;opacity:40%" >
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"  >
+      <ul class="nav navbar-nav">
+          <li class="{{ 'active' if current_page == 'home' else '' }}"><a href="http://bioinfo.life.hust.edu.cn/SEGreg/">Home</a></li>
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Data Source<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="http://bioinfo.life.hust.edu.cn/SEGreg/TCGA" target="_self">TCGA</a></li>
+            <li><a href="http://bioinfo.life.hust.edu.cn/SEGreg/BodyMap" target="_self">BodyMap</a></li>
+            <li><a href="http://bioinfo.life.hust.edu.cn/SEGreg/CCLE" target="_self">CCLE</a></li>
+            <li><a href="http://bioinfo.life.hust.edu.cn/SEGreg/GTEx" target="_self">GTEx</a></li>
+          </ul>
+          </li>
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Regulation<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="http://bioinfo.life.hust.edu.cn/SEGreg/miRNARegulation" target="_self">miRNA regulation</a></li>
+            <li><a href="http://bioinfo.life.hust.edu.cn/SEGreg/TFRegulation" target="_self">TF regulation</a></li>
+          </ul>
+          </li>
+          <li><a href="http://bioinfo.life.hust.edu.cn/SEGreg/search" target="_self">Search</a></li>
+          <li><a href="http://bioinfo.life.hust.edu.cn/SEGreg/statistics" target="_self">Statistics</a></li>
+          <li><a href="http://bioinfo.life.hust.edu.cn/SEGreg/download" target="_self">Download</a></li>
+          <li class="{{ 'active' if current_page == 'help' else '' }}"><a href="http://bioinfo.life.hust.edu.cn/SEGreg/help" target="_self">Document</a></li>
+          <li><form class="navbar-form navbar-right" id="search" method="post" action="http://bioinfo.life.hust.edu.cn/SEGreg/searchAll" target="_blank" style="margin-right:3px">
+         <input name=_csrf_token type=hidden value="{{ csrf_token() }}">
+         <div class="form-group">
+         <input type="text" id="clear" data-provide="typeahead" data-source='["A1BG","BHMT","CES1","hsa-miR-100-5p","hsa-miR-335-5p","hsa-miR-99a-5p","Lung","Kidney","Pancreas"]' class="form-control" placeholder="liver" title="Input a tissue/cancer/gene/miRNA/TF name &#10 and click search to browse data." value="liver" name="term">
+        </div>
+<button type="submit"  id="search" class="btn btn-default">Search</button>
+      </form>  
+</li>
+        </ul></div></div></nav>

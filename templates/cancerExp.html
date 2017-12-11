@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <script type="text/javascript" src="/static/SEGreg/js/fusioncharts/fusioncharts-suite-xt/js/fusioncharts.js"></script>
+    <script type="text/javascript" src="/static/SEGreg/js/fusioncharts/fusioncharts-suite-xt/js/fusioncharts.charts.js"></script>
+    <script type="text/javascript" src="/static/SEGreg/js/fusioncharts/fusioncharts-suite-xt/js/themes/fusioncharts.theme.fint.js"></script>
+    <title>Expression level</title>
+    {% set current_page = '' %}
+    {% include 'navigation.partial.html' %}
+    </div>
+
+<script type='text/javascript'>
+FusionCharts.ready(function () {
+    var barplotSEGreg = new FusionCharts({
+        type: 'column2d',
+        renderAt: 'chart-container',
+        width: '1145',
+        height: '500',
+        dataFormat: 'xml',
+        dataSource: '{{ render_data|safe }}'
+    })
+barplotSEGreg.render();
+});
+</script>
+</body>
+<div class="container" id="chart-container">Barplot will render here</div>
+</html>
+{% include 'footer.html' %}

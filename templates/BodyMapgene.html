@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <title>Browse by BodyMap gene</title>
+    {% set current_page = '' %}
+    {% include 'navigation.partial.html' %}
+    </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#tcga').tablesorter({
+            theme: "bootstrap",
+            widgets: ["uitheme", 'zebra'],
+            headerTemplate: '{content} {icon}'
+        });
+    });
+    $(function (){
+        $("[data-toggle='popover']").popover();
+    });
+</script>
+
+<div class="container bs-docs-container" >
+    <table>
+            <tr><td style="width:600px;color: #CD3700;"><h4>Browse by genes from <b>BodyMap</b> | Total records: <b>{{ sum }}</b></h4></td> <td align="right" width="500px">{{ pagination.links }}</td></tr>
+    </table>
+    <table id="tcga" class="table table-bordered table-striped table-hover table-condensed tablesorter tablesorter-bootstrap" role = "grid">
+        <thead><tr class = "active" role="row">
+        <th>ID</th><th>Gene</th><th style="text-align: center">Tag</th><th style="text-align: center">Tissue</th><th style="text-align: center">Network</th><th style="text-align: center">Detail</th></tr></thead>
+        <tbody>
+        {% for i in numbers %}
+            <tr><td title="{{ i.3 }}">{{ i.3 }}</td>
+                <td title="{{ i.0 }}"><a href="https://www.ncbi.nlm.nih.gov/gene/?term={{ i.0 }}" target="_self">{{ i.0 }}</a></td>
+                <td title="See barplot of gene expression level" style="text-align: center"><a href="http://bioinfo.life.hust.edu.cn/SEGreg/expBarplotBodyMapgene?gene={{ i.0 }}" target="_self">{{ i.1 }}</td>
+                <td style="width:400px" title="{{ i.2 }}">{{ i.2|truncate(80)}}</td>
+                <td align="center"><a href="http://bioinfo.life.hust.edu.cn/SEGreg/browseGeneNetwork?source=BodyMap&gene={{ i.0 }}&tissue={{ i.2 }}" target="_self">network</a></td>
+                <td align="center"><button id="{{ i.3 }}" value="{{ i }}"  onclick="document.getElementById('details').innerHTML =test({{ i.3 }})" style="height:26px" class="btn btn-primary"  data-toggle="modal"  data-target="#myModal">detail</button></td></tr>
+                <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content" >
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4  class="modal-title" id="myModalLabel"><b>Details</b></h4>
+                            </div>
+                            <div id="details" class="modal-body" style="color: #0D0D0D">
+                                <p>Text goes here.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        {% endfor %}
+        </tbody>
+    </table>
+    {{ pagination.links }}
+<script>
+        function test(a){var myvar= document.getElementById(a).value;
+            var gene=myvar.split(",")[0].replace("(u'","").replace("'","");
+            var tag=myvar.split(",")[1].replace("u'","").replace("'","");
+            var cancer=myvar.split(",")[2].replace("u'","").replace("'","");
+            return "<b>Gene:&nbsp</b>"+gene+"<br>"+"<b>Highly/Lowly expressed:&nbsp</b>"+tag+"ly<br>"+"<b>Expressed in tissue:&nbsp</b>"+cancer+"<br>";
+        }</script>
+</div>
+</body>
+</html>
+{% include 'footer.html' %}

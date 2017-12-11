@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <title>Regulatory network</title>
+
+    {% set current_page = '' %}
+    {% include 'navigation.partial.html' %}
+</div>
+
+<div class="container bs-docs-container" >
+{#<div>#}
+<script type="text/javascript" src="/static/SEGreg/cytoscape/js/min/json2.min.js"></script>
+<script type="text/javascript" src="/static/SEGreg/cytoscape/js/min/AC_OETags.min.js"></script>
+<script type="text/javascript" src="/static/SEGreg/cytoscape/js/min/cytoscapeweb.min.js"></script>
+
+<h3>Regulatory network of {{ tf }} in {{ dataSource }} {{ input_tissue }}</h3>
+<div id="cytoscapeweb" style="width:1200px;height:800px;"></div>
+<script type="text/javascript">
+var xml = '{{ total_data|safe }}
+';
+        var visual_style = {
+            nodes: {
+                        borderColor: "#FFFFFF",
+                        borderWidth: 0,
+                        size: 40,
+                        color: {
+                            discreteMapper: {
+                                attrName: "id",
+                                entries: [
+                                    { attrValue: -1, value: "#B23AEE" },
+{#                                    { attrValue: 0, value: "#50b7c1" },{ attrValue: 1, value: "#50b7c1" },{ attrValue: 2, value: "#50b7c1" },{ attrValue: 3, value: "#50b7c1" },{ attrValue: 4, value: "#50b7c1" },{ attrValue: 5, value: "#50b7c1" },{ attrValue: 6, value: "#50b7c1" },{ attrValue: 7, value: "#50b7c1" },{ attrValue: 8, value: "#50b7c1" },{ attrValue: 9, value: "#50b7c1" },{ attrValue: 10, value: "#50b7c1" },{ attrValue: 11, value: "#50b7c1" },{ attrValue: 12, value: "#50b7c1" },{ attrValue: 13, value: "#50b7c1" },{ attrValue: 14, value: "#50b7c1" },{ attrValue: 15, value: "#50b7c1" },#}
+                                    {{ total_attr|safe }}
+                                   ]
+                            }
+                        },
+                        labelHorizontalAnchor: "center",
+                        labelFontSize: 16,
+                        labelFontColor: "#000000",
+                        labelFontWeight: "bold"
+                    }
+        }
+
+
+    //swf path
+    var options = { swfPath: "/static/SEGreg/cytoscape/swf/CytoscapeWeb"}
+
+    // init and draw
+    var vis = new org.cytoscapeweb.Visualization("cytoscapeweb",options);
+    vis.draw({ network: xml, visualStyle: visual_style });
+</script>
+    <div align="center"><p><b>Color:&nbsp</b> <span style="background-color:#FFF68F">&nbsp&nbsp&nbsp&nbsp</span>&nbspgene;&nbsp&nbsp<span style="background-color:#B23AEE">&nbsp&nbsp&nbsp&nbsp</span>&nbspTF</p><br>Note: The nodes in the figure can be moved by mouse.
+    <a id='a' download='Network of {{ tf }}.csv' type='text/csv'><h3>Click here to download data of the network.</h3></a>
+<script>
+    var csv = "{{download_data|safe}}";
+    var data = new Blob([csv]);
+    var a = document.getElementById('a');
+    a.href = URL.createObjectURL(data);
+</script></div>
+    <!-- <div align="center"><p><b>Color:&nbsp</b> <span style="background-color:#FFF68F">Yellow</span>:&nbsp gene; <span style="background-color:#50b7c1">Blue</span>:&nbsp miRNA; <span style="background-color:#B23AEE">Purple</span>:&nbsp TF; <span style="background-color:#9ACD32">Green</span>:&nbsp If this gene is also a TF,&nbsp the target genes are marked in green.</p></div> -->
+</body>
+</html>
+{% include 'footer.html' %}

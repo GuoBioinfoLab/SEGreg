@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <title>Regulatory network</title>
+
+    {% set current_page = '' %}
+    {% include 'navigation.partial.html' %}
+</div>
+
+<div class="container bs-docs-container" >
+{#<div>#}
+<script type="text/javascript" src="/static/SEGreg/cytoscape/js/min/json2.min.js"></script>
+<script type="text/javascript" src="/static/SEGreg/cytoscape/js/min/AC_OETags.min.js"></script>
+<script type="text/javascript" src="/static/SEGreg/cytoscape/js/min/cytoscapeweb.min.js"></script>
+
+<h3>Regulatory network of {{ genename }} gene in {{ dataSource }} {{ input_tissue }}</h3>
+<div class="row">
+<div class="col-lg-6">
+<div id="cytoscapeweb1" style="width:600px;height:800px;"></div>
+</div>
+<div class="col-lg-6">
+<div id="cytoscapeweb" style="width:600px;height:800px;"></div>
+</div>
+</div>
+<script type="text/javascript">
+var xml = '{{ total_data.0|safe }}
+';
+        var visual_style = {
+            nodes: {
+                        borderColor: "#FFFFFF",
+                        borderWidth: 0,
+                        size: 40,
+                        color: {
+                            discreteMapper: {
+                                attrName: "id",
+                                entries: [
+                                    { attrValue: -1, value: "#EEEE00" },
+{#                                    { attrValue: 0, value: "#50b7c1" },{ attrValue: 1, value: "#50b7c1" },{ attrValue: 2, value: "#50b7c1" },{ attrValue: 3, value: "#50b7c1" },{ attrValue: 4, value: "#50b7c1" },{ attrValue: 5, value: "#50b7c1" },{ attrValue: 6, value: "#50b7c1" },{ attrValue: 7, value: "#50b7c1" },{ attrValue: 8, value: "#50b7c1" },{ attrValue: 9, value: "#50b7c1" },{ attrValue: 10, value: "#50b7c1" },{ attrValue: 11, value: "#50b7c1" },{ attrValue: 12, value: "#50b7c1" },{ attrValue: 13, value: "#50b7c1" },{ attrValue: 14, value: "#50b7c1" },{ attrValue: 15, value: "#50b7c1" },#}
+                                    {{ total_attr.0|safe }}
+                                   ]
+                            }
+                        },
+                        labelHorizontalAnchor: "center",
+                        labelFontSize: 16,
+                        labelFontColor: "#000000",
+                        labelFontWeight: "bold"
+                    }
+        }
+
+
+    //swf path
+    var options = { swfPath: "/static/SEGreg/cytoscape/swf/CytoscapeWeb"}
+
+    // init and draw
+    var vis = new org.cytoscapeweb.Visualization("cytoscapeweb1",options);
+    vis.draw({ network: xml, visualStyle: visual_style });
+    var xml = '{{ total_data.0|safe }}
+';
+        var visual_style = {
+            nodes: {
+                        borderColor: "#FFFFFF",
+                        borderWidth: 0,
+                                                size: 40,
+                        color: {
+                            discreteMapper: {
+                                attrName: "id",
+                                entries: [
+                                    { attrValue: -1, value: "#EEEE00" },
+{#                                    { attrValue: 0, value: "#50b7c1" },{ attrValue: 1, value: "#50b7c1" },{ attrValue: 2, value: "#50b7c1" },{ attrValue: 3, value: "#50b7c1" },{ attrValue: 4, value: "#50b7c1" },{ attrValue: 5, value: "#50b7c1" },{ attrValue: 6, value: "#50b7c1" },{ attrValue: 7, value: "#50b7c1" },{ attrValue: 8, value: "#50b7c1" },{ attrValue: 9, value: "#50b7c1" },{ attrValue: 10, value: "#50b7c1" },{ attrValue: 11, value: "#50b7c1" },{ attrValue: 12, value: "#50b7c1" },{ attrValue: 13, value: "#50b7c1" },{ attrValue: 14, value: "#50b7c1" },{ attrValue: 15, value: "#50b7c1" },#}
+                                    {{ total_attr.0|safe }}
+                                   ]
+                            }
+                        },
+                        labelHorizontalAnchor: "center",
+                                                labelFontSize: 16,
+                                                labelFontColor: "#000000",
+                                                labelFontWeight: "bold"
+                    }
+        }
+
+
+    //swf path
+    var options = { swfPath: "/static/SEGreg/cytoscape/swf/CytoscapeWeb"}
+
+    // init and draw
+    var vis = new org.cytoscapeweb.Visualization("cytoscapeweb",options);
+    vis.draw({ network: xml, visualStyle: visual_style });
+
+</script>
+
+    <div align="center"><p><b>Color:&nbsp</b> <span style="background-color:#FFF68F">Yellow</span>:&nbsp gene; <span style="background-color:#50b7c1">Blue</span>:&nbsp miRNA; <span style="background-color:#B23AEE">Purple</span>:&nbsp TF; <span style="background-color:#9ACD32">Green</span>:&nbsp If this gene is also a TF,&nbsp the target genes are marked in green.</p></div>
+</body>
+</html>
+<footer class="bs-docs-footer" role="contentinfo" >
+    <div class="container" >
+        <p class="container text-center">Copyright &copy;<a href="http://bioinfo.life.hust.edu.cn/" target=_self> Guo Lab</a>,<a href="http://life.hust.edu.cn/" target=_self>&nbsp;College of Life Science and Technology</a>,<a href="http://www.hust.edu.cn" target=_self> HUST</a>, China</p>
+        <p class="container text-center">Any comments and suggestions, please <a href="/SEGreg/contact">contact us</a></p>
+    </div></footer>
+
+{#var xml = '<graphml><key id="label" for="all" attr.name="label" attr.type="string"/><key id="weight" for="node" attr.name="weight" attr.type="double"/><graph edgedefault="directed"><node id="-1"><data key="label">let-7a-5p</data></node><node id="0"><data key="label">RACCYCD</data></node><node id="1"><data key="label">CASPASE</data></node><node id="2"><data key="label">SKP2E2F</data></node><node id="3"><data key="label">P27</data></node><node id="4"><data key="label">EF</data></node><node id="5"><data key="label">TNFR1</data></node><node id="6"><data key="label">G1</data></node><node id="7"><data key="label">RANMS</data></node><node id="8"><data key="label">P53</data></node><node id="9"><data key="label">RB</data></node><node id="10"><data key="label">MTA3</data></node><node id="11"><data key="label">HIVNEF</data></node><node id="12"><data key="label">CELLCYCLE</data></node><node id="13"><data key="label">G1</data></node><node id="14"><data key="label">FAS</data></node><node id="15"><data key="label">MCM</data></node><edge source="-1" target="0"></edge><edge source="-1" target="1"></edge><edge source="-1" target="2"></edge><edge source="-1" target="3"></edge><edge source="-1" target="4"></edge><edge source="-1" target="5"></edge><edge source="-1" target="6"></edge><edge source="-1" target="7"></edge><edge source="-1" target="8"></edge><edge source="-1" target="9"></edge><edge source="-1" target="10"></edge><edge source="-1" target="11"></edge><edge source="-1" target="12"></edge><edge source="-1" target="13"></edge><edge source="-1" target="14"></edge><edge source="-1" target="15"></edge></graph></graphml>';#}
+{% include 'footer.html' %}

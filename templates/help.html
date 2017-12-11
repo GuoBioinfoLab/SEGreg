@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="/static/SEGreg/css/jquery.tablesorter.pager.min.css">
+    <script src="/static/SEGreg/js/respond.min.js"></script>
+    <link rel="stylesheet" href="/static/SEGreg/css/theme.bootstrap.css">
+    <title>Document</title>
+    {% include 'navigation.partial.html' %}
+</div>
+
+<div class="container bs-docs-container" >
+    <div class="panel panel-default">
+    <div class="panel-heading">
+        Dataset & Browse
+    </div>
+    <div class="panel-body">
+        <ul>
+            <li>We built SEGreg database by identifying SEGs from high-throughput data of TCGA, BodyMap, CCLE and GTEx database, along with the corresponding miRNA and TF regulations collected from several databases.
+            </li>
+            <li>By clicking the buttons in navigation bar of homepage, users can browse SEGs (Specifically expressed genes) by cancer types or tissues or regulators, as well as download datasets, search and get the statistical data.</li>
+            <li>By clicking the figures or names of datasets in "SEG list" panel, users can browse all specifically expressed genes in relative database.<br>
+            </li>
+            <li>By clicking bar charts in "Tissue/Cancer" panel, users will see the barplot of highly/lowly expressed genes in different cancer types of TCGA or different tissues of other three datasets, and users can see detailed information of those genes by clicking pillars in the graph.<br>
+            </li>
+            <li> In the "Synergistic Regulation" panel, users can build their own regulatory network by choosing data source and tissue/cancer type, as well as inputing miRNAs and TFs in the input boxes, by clicking the "Submit" button, the regulatory network will show in a new page.
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        SEGs
+    </div>
+    <div class="panel-body">
+        <p>In SEGreg, SEGs is identified by <a href="http://bioinfo.life.hust.edu.cn/SEGtool/">SEGtool</a>, which based on Fuzzy c-means, Jaccard index and greedy annealing method and outerperform the existing tools. Browse by tissues or genes as mentioned above, users will get the informations of SEGs presented in table format, in which there is a column named "Tag", by clicking the content in this column, users will see highly/lowly expressions of that gene in various cancer types/tissues. For example, gene A1BG highly expressed in LIHC, click the tag column of it,you will see expressions of it in different cancers, like the figure shown in below:</p>
+        <img src="/static/SEGreg/images/Browse_result.jpg" style="margin-left:20px;align:center">
+        <br><br>
+        <img src="/static/SEGreg/images/A1BG_exp.jpg" style="margin-left:20px">
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Regulation
+    </div>
+    <div class="panel-body">
+        <p>In SEGreg, we provided two types of regulations: miRNA-gene and TF-gene. There are several ways for users to browse regulation information:
+        <ul>
+            <li>You can choose to browse miRNA regulation or TF regulation by clicking the "Regulation" title in the navigation bar of homepage.</li>
+            <li>On the result display page as we mentioned in "SEGs" section above, there is a column named "Regulatory network", by clicking the contend of this column, you will see the regulation relationship between miRNA and gene or TF and gene. The figure below is a regulatory network of gene A1BG which mentioned above:</li>
+            <img src="/static/SEGreg/images/A1BG.jpg" style="margin-left:20px;align:center">
+            <li>You can build regulatory networks using your interested miRNA and TF at the "Synergistic Regulation" panel on home page as we mentioned in "Dataset & Browse" section.</li>
+        Here are several examples:
+        </ul>
+        </p>
+        <div class="row">
+            <div class="col-lg-4"><img src="/static/SEGreg/images/miRNA_reg.jpg"></div>
+            <div class="col-lg-4"><img src="/static/SEGreg/images/TF_reg.jpg"></div>
+            <div class="col-lg-4"><img src="/static/SEGreg/images/custom_reg.jpg"></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-offset-1 col-lg-3">miRNA:gene regulation</div>
+            <div class="col-lg-offset-1 col-lg-3">TF:gene regulation</div>
+            <div class="col-lg-offset-1 col-lg-3">custom regulation</div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <div class="content">
+    <div class="panel panel-default">
+    <div class="panel-heading">Contact us</div>
+    <div class="panel-body">
+     <div id="people">
+        <p><h4><strong>An-Yuan Guo, Ph.D. Professor of Bioinformatics</strong></h4></p>
+        <div ><strong>Email:</strong><img src="/static/SEGreg/images/guo_email.png"></img></div>
+        <p><h4><strong>Qin Tang, Ph.D.</strong></h4></p>
+        <div ><strong>Email:</strong><img src="/static/SEGreg/images/tang_email.png"></div>
+    </div>
+    <div id="organization" style="margin-top:30px">
+    <p ><a href="http://bioinfo.life.hust.edu.cn/" target=_self >Hubei Bioinformatics & Molecular Imaging Key Laboratory</a></p>
+    <p>Department of Bioinformatics and Systems Biology</p>
+    <p ><a href="http://life.hust.edu.cn/" target=_self >College of Life Science and Technology</a></p>
+    <p ><a href="http://www.hust.edu.cn/" target=_self >Huazhong University of Science and Technology</a>, Wuhan 430074 P.R. China</p>
+    </div>
+    </div>
+    </div>
+    {#<h2 class="subTitletext">Contact us</h2>
+    <div id="people"><table><tr><td>
+        <address>
+        <p><h4><strong>An-Yuan Guo, Ph.D. Professor of Bioinformatics</strong></h4></p>
+        <div><strong>Email:</strong><img src="/static/SEGreg/images/guo_email.png"></img></div>
+        </address></td><td>
+        <br>
+        <p><h4><strong>Qin Tang, Ph.D.</strong></h4></p>
+        <div><strong>Email:</strong><img src="/static/SEGreg/images/tang_email.png"></div>
+        </address></td></tr></table>
+    </div>
+    <div id="organization" style="margin-top:30px">
+    <p ><a href="http://bioinfo.life.hust.edu.cn/" target=_self >Hubei Bioinformatics & Molecular Imaging Key Laboratory</a></p>
+    <p>Department of Bioinformatics and Systems Biology</p>
+    <p ><a href="http://life.hust.edu.cn/" target=_self >College of Life Science and Technology</a></p>
+    <p ><a href="http://www.hust.edu.cn/" target=_self >Huazhong University of Science and Technology</a>, Wuhan 430074 P.R. China</p>
+    </div>
+</div>
+</div>
+</div>#}
+</body>
+</html>
+{% include 'footer.html' %}

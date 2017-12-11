@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="/static/SEGreg/css/jquery.tablesorter.pager.min.css">
+    <script src="/static/SEGreg/js/jquery.tablesorter.min.js"></script>
+    <script src="/static/SEGreg/js/jquery.tablesorter.widgets.min.js"></script>
+    <script src="/static/SEGreg/js/jquery.tablesorter.pager.min.js"></script>
+    <script src="/static/SEGreg/js/respond.min.js"></script>
+    <link rel="stylesheet" href="/static/SEGreg/css/theme.bootstrap.css">
+    <title>{{ name }} TF regulation</title>
+
+    {% set current_page = '' %}
+    {% include 'navigation.partial.html' %}
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#tcga').tablesorter({
+                theme: "bootstrap",
+                widgets: ["uitheme", 'zebra'],
+                headerTemplate: '{content} {icon}'
+            });
+        });
+    </script>
+
+    <div class="container bs-docs-container" >
+        <table>
+            <tr><td style="width:600px;color: #CD3700;"><h4>Browse <b>{{ name }}</b> TF <b>{{ TFname }} </b> regulation| Total records: <b>{{ sum }}</b></h4></td> <td align="right" width="500px">{{ pagination.links }}</td></tr>
+        </table>
+        <table id="tcga"  class="table table-bordered table-striped table-hover table-condensed tablesorter tablesorter-bootstrap" role = "grid">
+            <thead><tr class = "active" role="row">
+                <th title="Onmouseover the cancer to see the full cancer name">Cancer</th><th>Tissue</th><th>TF</th><th>Gene</th><th>Regulatory<br> network</th><th>Detail</th></tr></thead>
+            <tbody>
+            {% for i in numbers %}
+                <tr>
+                    <td style="color:#6CA6CD" title="{{ i.2 }}">{{ i.0 }}</td>
+                    <td title="{{ i.1 }}">{{ i.1 }}</td>
+                    <td title="{{ i.3 }}">{{ i.3|truncate(40)}}</td>
+                    <td title="{{ i.4 }}">{{ i.4|truncate(60) }}</td>
+                    <td align="center"><a href="http://bioinfo.life.hust.edu.cn/SEGreg/TFnetwork?source={{ name }}&tissue={{ i.0 }}&TF={{ i.3 }}" target="_self">network</a></td>
+                    <td align="center"><button id="{{ i.5 }}" value="{{ i }}"  onclick="document.getElementById('details').innerHTML =test({{ i.5 }})" style="height:26px" class="btn btn-primary"  data-toggle="modal"  data-target="#myModal">detail</button></td></tr>
+                <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content" >
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4  class="modal-title" id="myModalLabel"><b>Details</b></h4>
+                            </div>
+                            <div id="details" class="modal-body" style="color: #0D0D0D">
+                                <p>Text goes here.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </tbody>
+        </table>
+        {{ pagination.links }}
+        <script>
+            function test(a){var myvar= document.getElementById(a).value;
+                var cancerFullName=myvar.split(",")[2].replace("u'","").replace("'","");
+                var cancer=myvar.split(",")[0].replace("(u'","").replace("'","");
+                var tissue=myvar.split(",")[1].replace("u'","").replace("'","");
+                var miR=myvar.split(",")[3].replace("u'","").replace("'","");
+                var gene=myvar.split(",")[4].replace("u'","").replace("'","");
+                return "<b>Cancer:&nbsp</b>"+cancer+"<br>"+"<b>Cancer full name:&nbsp</b>"+cancerFullName+"<br>"+"<b>From tissue:&nbsp</b>"+tissue+"<br>"+"<b>miRNA:&nbsp</b>"+miR+"<br>"+"<b>Regulated genes:&nbsp</b>"+gene;
+            }</script>
+    </div>
+    </body>
+</html>
+{% include 'footer.html' %}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <title>miRNA regulation</title>
+    {% set current_page = '' %}
+    {% include 'navigation.partial.html' %}
+    </div>
+    <div id="wrapper"  role="navigation" >
+        <div class="container">
+            {#    <div class="content">#}
+            <h2 class="subTitletext">miRNA regulation of different data source:</h2>
+            <table>
+                <tr><td><a href='http://bioinfo.life.hust.edu.cn/SEGreg/miRNARegulationO?object=TCGA' target="_self"><h2>TCGA</h2></a></td></tr>
+                <tr><td><a href='http://bioinfo.life.hust.edu.cn/SEGreg/miRNARegulationO?object=BodyMap' target="_self"><h2>BodyMap</h2></a></td></tr>
+                <tr><td><a href='http://bioinfo.life.hust.edu.cn/SEGreg/miRNARegulationO?object=GTEx' target="_self"><h2>GTEx</h2></a></td></tr>
+                <tr><td><a href='http://bioinfo.life.hust.edu.cn/SEGreg/miRNARegulationO?object=CCLE' target="_self"><h2>CCLE</h2></a></td></tr>
+            </table>
+        </div>
+    </div>
+    </body>
+</html>
+{% include 'footer.html' %}

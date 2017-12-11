@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="/static/SEGreg/css/jquery.tablesorter.pager.min.css">
+    <script src="/static/SEGreg/js/respond.min.js"></script>
+    <link rel="stylesheet" href="/static/SEGreg/css/theme.bootstrap.css">
+    <link type="text/css" rel="Stylesheet" href="/static/SEGreg/css/imageflow.css" />
+    <script type="text/javascript" src="/static/SEGreg/js/imageflow.js"></script>
+    <title>Statistics</title>
+    {% include 'navigation.partial.html' %}
+</div>
+<br>
+<div id="wrapper"  role="navigation">
+   <div class="container">
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+<div align="center" class="carousel-inner" role="listbox">
+    <!-- table1 -->
+    <div class="item active">
+      <a href = "http://bioinfo.life.hust.edu.cn/SEGreg/TCGA" target=_self><img src="/static/SEGreg/images/Table_1.png" alt="Table 1"></a><br>
+      <div><p><h2 style="color:black">Table 1. SEGs of each cancer in TCGA dataset.</h2></p></div><br>
+    </div>
+    <!-- Figure 1 -->
+    <div class="item"><br>
+      <a href = "http://bioinfo.life.hust.edu.cn/SEGreg/TCGA" target=_self><img src="/static/SEGreg/images/Figure_1.png" alt="Figure 1"></a><br>
+      <div><p><h2 style="color:black">
+        Figure 1. The total, high, low and overlap of high and low SEG number in TCGA dataset.</h2></p>
+      </div><br>
+    </div>
+    <!-- Figure 2 -->
+    <div class="item"><br>
+      <a href = "http://bioinfo.life.hust.edu.cn/SEGreg/TCGAbarchart" target=_self><img src="/static/SEGreg/images/Figure_2.png" alt="Figure 2"></a><br>
+      <div><p><h2 style="color:black">
+        Figure 2. SEG number of different cancer types in TCGA dataset . The blue and red color in the column indicate the highly and lowly expressed SEGs in the cancer respectively, while the black and orange color indicate the genes also highly or lowly expressed in the other cancers.</h2></p>
+      </div><br>
+    </div>
+    <!-- Figure 3 -->
+    <div class="item"><br>
+      <a href = "http://bioinfo.life.hust.edu.cn/SEGreg/TCGA" target=_self><img src="/static/SEGreg/images/Figure_3.png" alt="Figure 3"></a><br>
+      <div><p><h2 style="color:black">
+        Figure 3. The number of recurrently emerged SEGs in TCGA dataset. Some genes are specifically expressed in more than one cancer.</h2></p>
+      </div><br>
+    </div>
+    <!-- Figure 4 -->
+    <div class="item"><br>
+      <a href = "http://bioinfo.life.hust.edu.cn/SEGreg/BodyMap" target=_self><img src="/static/SEGreg/images/Figure_4.png" alt="Figure 4"></a><br>
+      <div><p><h2 style="color:black">
+        Figure 4. The total, high, low and overlap of high and low SEG number in BodyMap dataset.</h2></p>
+      </div><br>
+    </div>
+    <!-- Figure 5 -->
+    <div class="item"><br>
+      <a href = "http://bioinfo.life.hust.edu.cn/SEGreg/BodyMapbarchart" target=_self><img src="/static/SEGreg/images/Figure_5.png" alt="Figure 5"></a><br>
+      <div><p><h2 style="color:black">
+        Figure 5. SEG number of different tissues in BodyMap dataset. The blue and red color in the column indicate the highly and lowly expressed SEGs in the tissue respectively, while the black and orange color indicate the genes also highly or lowly expressed in the other tissues.</h2></p>
+      </div><br>
+    </div>
+    <!-- Figure 6 -->
+    <div class="item"><br>
+      <a href = "http://bioinfo.life.hust.edu.cn/SEGreg/BodyMap" target=_self><img src="/static/SEGreg/images/Figure_6.png" alt="Figure 6"></a><br>
+      <div><p><h2 style="color:black">
+        Figure 6. The number of recurrently emerged SEGs in BodyMap dataset. Some genes are specifically expressed in more than one tissue.</h2></p>
+      </div><br>
+    </div>
+    <!-- Figure 7 -->
+    <div class="item">
+      <a href = "http://bioinfo.life.hust.edu.cn/SEGreg/CCLE" target=_self><img src="/static/SEGreg/images/Figure_7.png" alt="Figure 7"></a><br>
+      <div><p><h2 style="color:black">
+        Figure 7. The total, high, low and overlap of high and low SEG number in CCLE dataset.</h2></p>
+      </div><br>
+    </div>
+    <!-- Figure 8 -->
+    <div class="item"><br>
+      <a href = "http://bioinfo.life.hust.edu.cn/SEGreg/CCLEbarchart" target=_self><img src="/static/SEGreg/images/Figure_8.png" alt="Figure 8"></a><br>
+      <div><p><h2 style="color:black">
+        Figure 8. SEG number of different tissues in CCLE dataset. The blue and red color in the column indicate the highly and lowly expressed SEGs in the tissue respectively, while the black and orange color indicate the genes also highly or lowly expressed in the other tissues.</h2></p>
+      </div><br>
+    </div>
+    <!-- Figure 9 -->
+    <div class="item"><br>
+      <a href = "http://bioinfo.life.hust.edu.cn/SEGreg/CCLE" target=_self><img src="/static/SEGreg/images/Figure_9.png" alt="Figure 9"></a><br>
+      <div><p><h2 style="color:black">
+        Figure 9. The number of recurrently emerged SEGs in CCLE dataset. Some genes are specifically expressed in more than one tissue.</h2></p>
+      </div><br>
+    </div>
+    <!-- Figure 10 -->
+    <div class="item"><br>
+      <a href = "http://bioinfo.life.hust.edu.cn/SEGreg/GTEx" target=_self><img src="/static/SEGreg/images/Figure_10.png" alt="Figure 10"></a><br>
+      <div><p><h2 style="color:black">
+        Figure 10. The total, high, low and overlap of high and low SEG number in GTEx dataset.</h2></p>
+      </div><br>
+    </div>
+    <!-- Figure 11 -->
+    <div class="item"><br>
+      <a href = "http://bioinfo.life.hust.edu.cn/SEGreg/GTExbarchart" target=_self><img src="/static/SEGreg/images/Figure_11.png" alt="Figure 11"></a><br>
+      <div><p><h2 style="color:black">
+        Figure 11. SEG number of different tissues in GTEx dataset. The blue and red color in the column indicate the highly and lowly expressed SEGs in the tissue respectively, while the black and orange color indicate the genes also highly or lowly expressed in the other tissues.</h2></p>
+      </div><br>
+    </div>
+    <!-- Figure 12 -->
+    <div class="item"><br>
+      <a href = "http://bioinfo.life.hust.edu.cn/SEGreg/GTEx" target=_self><img src="/static/SEGreg/images/Figure_12.png" alt="Figure 12"></a><br>
+      <div><p><h2 style="color:black">
+        Figure 12. The number of recurrently emerged SEGs in GTEx dataset. Many genes are specifically expressed in more than one tissue.</h2></p>
+      </div><br>
+    </div>
+    <!-- <p><h2>Data statistics</h2></p> -->
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left " style="color: #3CB371;" aria-hidden="false"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" style="color: #3CB371;" aria-hidden="false"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div></div></div>
+</body>
+</html>
+{% include 'footer.html' %}
